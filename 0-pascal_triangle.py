@@ -1,3 +1,9 @@
+#!/usr/bin/python3
+"""
+Pascal's Triangle function
+"""
+
+
 def pascal_triangle(n):
     triangle = [[1] * (i + 1) for i in range(n)]
     for i in range(n):
