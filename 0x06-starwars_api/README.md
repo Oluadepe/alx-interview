@@ -1,0 +1,1 @@
+This repository is about "Star Wars API" an interview practice task that  prints all characters of a Star Wars movie. This is part of the interview preparation modules for "SHORT BACKEND SPECIALIZATION COURSE" toward "FULL STACK SOFTWARE ENGINEERING" Training by ALX
