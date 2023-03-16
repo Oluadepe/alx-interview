@@ -1,0 +1,1 @@
+This repository is about "Rotate 2D Matrix" an interview practice task that when Given an n x n 2D matrix, rotate it 90 degrees clockwise. This is part of the interview preparation modules towards "SHORT BACKEND SPECIALIZATION COURSE" toward FULL STACK SOFTWARE ENGINEERING Training by ALX
