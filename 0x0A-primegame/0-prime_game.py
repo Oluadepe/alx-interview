@@ -1,26 +1,42 @@
-#!/usr/bin/python3"""
+def isPrime(i):
+    """
+    Check if a number is prime.
+    """
+    if i < 2:
+        return False
+    for j in range(2, int(i**0.5) + 1):
+        if i % j == 0:
+            return False
+    return True
+
+
+def findPrimes(n):
+    """
+    Dispatch a given set into prime numbers and non-prime numbers.
+    """
+    counter = 0
+    target = list(n)
+    for i in range(1, len(target) + 1):
+        if isPrime(i):
+            counter += 1
+            target.remove(i)
+            target = _searchMultiple(i, target)
+    return counter
 
 
 def isWinner(x, nums):
-    """Identify winner in a prime game session with `x` rounds.
-    """
-    if x < 1 or not nums:
+    players = {'Maria': 0, 'Ben': 0}
+    for num in nums:
+        cluster = set(range(1, num + 1))
+        temp = findPrimes(cluster)
+        if temp % 2 == 0:
+            players['Ben'] += 1
+        else:
+            players['Maria'] += 1
+    if players['Maria'] > players['Ben']:
+        return 'Maria'
+    elif players['Maria'] < players['Ben']:
+        return 'Ben'
+    else:
         return None
-    marias_wins, bens_wins = 0, 0
-    # Sieve algorithym to generate prime
-    n = max(nums)
-    primes = [True for _ in range(1, n + 1, 1)]
-    primes[0] = False
-    for i, is_prime in enumerate(primes, 1):
-        if i == 1 or not is_prime:
-            continue
-        for j in range(i + i, n + 1, i):
-            primes[j - 1] = False
-    # Sieve numbers primes less than n in nums for each round
-    for _, n in zip(range(x), nums):
-        primes_count = len(list(filter(lambda x: x, primes[0: n])))
-        bens_wins += primes_count % 2 == 0
-        marias_wins += primes_count % 2 == 1
-    if marias_wins == bens_wins:
-        return None
-    return 'Maria' if marias_wins > bens_wins else 'Ben'
+
