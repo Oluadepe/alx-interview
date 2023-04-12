@@ -4,7 +4,8 @@ def island_perimeter(grid):
     Returns the perimeter of the island described in grid.
 
     Args:
-        grid (list[list[int]]): A 2D list representing the island where 0 represents water and 1 represents land.
+        grid (list[list[int]]): A 2D list representing the island
+        where 0 represents water and 1 represents land.
 
     Returns:
         int: The perimeter of the island.
