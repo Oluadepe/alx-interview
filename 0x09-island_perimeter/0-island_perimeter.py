@@ -1,30 +1,21 @@
 #!/usr/bin/python3
+
 def island_perimeter(grid):
-    """
-    Returns the perimeter of the island described in grid.
-
-    Args:
-        grid (list[list[int]]): A 2D list representing the island
-        where 0 represents water and 1 represents land.
-
-    Returns:
-        int: The perimeter of the island.
-
-    """
-    def count_edges(matrix):
-        """Counts the number of edges along horizontal direction."""
-        count = 0
-        for row in matrix:
-            row = [0] + row + [0]
-            for i in range(1, len(row)):
-                count += row[i] != row[i - 1]
-        return count
-
-    # Transpose the grid to count edges along vertical direction
-    tgrid = [[] for _ in range(len(grid[0]))]
-    for row in grid:
-        for i, item in enumerate(row):
-            tgrid[i].append(item)
-
-    # Sum the edges counted in horizontal and vertical directions
-    return count_edges(grid) + count_edges(tgrid)
+    """Computes the perimeter of an island with no lakes."""
+    perimeter = 0
+    if not isinstance(grid, list):  # Use isinstance for type checking
+        return 0
+    n = len(grid)
+    m = len(grid[0]) if grid else 0  # Avoid index out of range
+    for i in range(n):
+        for j in range(m):
+            if grid[i][j] == 0:
+                continue
+            edges = (
+                i == 0 or grid[i - 1][j] == 0,  # Simplify conditions
+                j == m - 1 or grid[i][j + 1] == 0,
+                i == n - 1 or grid[i + 1][j] == 0,
+                j == 0 or grid[i][j - 1] == 0,
+            )
+            perimeter += sum(edges)
+    return perimeter
