@@ -1,7 +1,20 @@
 #!/usr/bin/python3
+"""
+Module for Prime Game
+"""
+
 
 def findingPrimeNumber(n):
-    """Returns a list of primes using the Sieve of Eratosthenes algorithm."""
+    """
+    Returns a list of primes using the Sieve of Eratosthenes algorithm.
+
+    Args:
+        n (int): Upper limit for finding primes.
+
+    Returns:
+        list: A list of boolean values representing prime numbers up to n.
+
+    """
     sieve = [True for _ in range(max(n + 1, 2))]
     for i in range(2, int(pow(n, 0.5)) + 1):
         if not sieve[i]:
@@ -13,7 +26,17 @@ def findingPrimeNumber(n):
 
 
 def isWinner(x, nums):
-    """Solves Prime Game and returns the winner."""
+    """
+    Solves Prime Game and returns the winner.
+
+    Args:
+        x (int): Number of turns to be played.
+        nums (list): List of integers representing the numbers to be used in the game.
+
+    Returns:
+        str or None: The winner of the game, either "Maria", "Ben", or None if it's a draw.
+
+    """
     if not nums or x < 1:
         return None
 
@@ -36,4 +59,6 @@ def isWinner(x, nums):
         winner = "Ben"
 
     return winner
+
+
 
