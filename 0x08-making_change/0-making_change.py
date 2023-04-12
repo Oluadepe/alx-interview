@@ -24,4 +24,3 @@ def makeChange(coins, total):
         else:
             coin_index += 1
     return coins_count
-
