@@ -2,11 +2,15 @@
 """
 Making Change
 """
+
+
 def makeChange(coins, total):
+
     """
-    Logic for the fewest number of coins needed 
+    Logic for the fewest number of coins needed
     to meet a given amount total.
     """
+
     if total <= 0:
         return 0
     remaining_total = total
