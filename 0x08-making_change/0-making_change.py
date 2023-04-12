@@ -1,4 +1,4 @@
-def make_change(coin_values, total_amount):
+def makeChange(coin_values, total_amount):
     """
     Logic to find the fewest number of coins needed to meet a given amount total.
     """
