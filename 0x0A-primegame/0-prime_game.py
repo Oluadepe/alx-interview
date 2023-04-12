@@ -31,10 +31,12 @@ def isWinner(x, nums):
 
     Args:
         x (int): Number of turns to be played.
-        nums (list): List of integers representing the numbers to be used in the game.
+        nums (list): List of integers representing the numbers
+        to be used in the game.
 
     Returns:
-        str or None: The winner of the game, either "Maria", "Ben", or None if it's a draw.
+        str or None: The winner of the game, either "Maria", "Ben",
+        or None if it's a draw.
 
     """
     if not nums or x < 1:
@@ -59,6 +61,3 @@ def isWinner(x, nums):
         winner = "Ben"
 
     return winner
-
-
-
