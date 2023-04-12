@@ -5,7 +5,7 @@ def makeChange(coins, total):
     Logic to find the fewest number of coins needed to meet a given amount total.
     """
 
-if total <= 0:
+    if total <= 0:
         return 0
     rmt = total
     coins_count = 0
