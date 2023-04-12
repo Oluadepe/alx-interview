@@ -1,52 +1,39 @@
 #!/usr/bin/python3
-    for index in targets:
-        if index % num == 0:
-            targets.remove(index)
-    return targets
 
-
-def isPrime(i):
-    if i == 1:
-        return False
-    for j in range(2, i):
-        if i % j == 0:
-            return False
-    return True
-
-
-def findPrimes(n):
-    counter = 0
-    target = list(n)
-    for i in range(1, len(target) + 1):
-        if isPrime(i):
-            counter += 1
-            target.remove(i)
-            target = _searchMultiple(i, target)
-        else:
-            pass
-    return counter
+def findingPrimeNumber(n):
+    """Returns a list of primes using the Sieve of Eratosthenes algorithm."""
+    sieve = [True for _ in range(max(n + 1, 2))]
+    for i in range(2, int(pow(n, 0.5)) + 1):
+        if not sieve[i]:
+            continue
+        for j in range(i * i, n + 1, i):
+            sieve[j] = False
+    sieve[0] = sieve[1] = False
+    return sieve
 
 
 def isWinner(x, nums):
-    players = {'Maria': 0, 'Ben': 0}
-    cluster = set()
-    for elem in range(x):
-        nums.sort()
-        num = nums[elem]
-        for i in range(1, num + 1):
-            cluster.add(i)
-            if i == num + 1:
-                break
-        temp = findPrimes(cluster)
-
-        if temp % 2 == 0:
-            players['Ben'] += 1
-        elif temp % 2 != 0:
-            players['Maria'] += 1
-
-    if players['Maria'] > players['Ben']:
-        return 'Maria'
-    elif players['Maria'] < players['Ben']:
-        return 'Ben'
-    else:
+    """Solves Prime Game and returns the winner."""
+    if not nums or x < 1:
         return None
+
+    max_num = max(nums)
+    sieve = findingPrimeNumber(max_num)
+
+    primes_count = 0
+    for i in range(len(sieve)):
+        if sieve[i]:
+            primes_count += 1
+        sieve[i] = primes_count
+
+    player1 = sum(sieve[n] % 2 == 1 for n in nums)
+
+    if player1 * 2 == len(nums):
+        winner = None
+    elif player1 * 2 > len(nums):
+        winner = "Maria"
+    else:
+        winner = "Ben"
+
+    return winner
+
